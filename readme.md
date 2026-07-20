@@ -1,6 +1,6 @@
 # Welcome, this is BoviSoftAPIREST
 
-Here u gonna found all the info about my cattle in Finca La Piolina. Thats the way that Im gonna manage my cattle, including sells and injections.
+Here u gonna find all the info about my cattle in Finca La Piolina. Thats the way that Im gonna manage my cattle, including sales and medical treatments.
 
 ### About API
 
@@ -10,13 +10,16 @@ Here u gonna found all the info about my cattle in Finca La Piolina. Thats the w
 
 #### Welcome message
 
--get `/` This endpoint is the API root and is just a welcome message, that return a simple string.
+- `GET(/)` API Root / Welcome message
 
 #### Cattles
 
-- getAll `/cattle/`
-- getById `/cattle/{id}`
-- post `...`
+- `GET(/cattle/)` Retrieve all cattle records
+- `GET(/cattle/{id})` Retrieve a specific cattle record by ID
+- `POST(/cattle/)` Register a new cattle record
+- `PATCH(/cattle/{id})` Update an existing cattle record
+- `PUT(/cattle/{id})` Partial update
+- `PATCH(/{id}/destroy)` Logical deletion
 
 ### MongoValidation
 
@@ -83,18 +86,4 @@ Here u gonna found all the info about my cattle in Finca La Piolina. Thats the w
 
 ## todo
 
-- add default statusID value as 1 in cattle records.
-- Improve the schema implementing another JSON format, like:
-
-```
-{
-  "id": "hash",
-  properties: {
-    ...
-  },
-  "id": "hash",
-  properties: {
-    ...
-  }
-}
-```
+- implement users, using login with google, but 4 include that is necessary firebase auth.
