@@ -19,5 +19,5 @@ public class Cattle{
     private String imagePath;
     private String motherId;
     private String fatherId;
-    private int statusId;
+    private int statusId = 1;
 }
