@@ -19,7 +19,7 @@ Here u gonna find all the info about my cattle in Finca La Piolina. Thats the wa
 - `POST(/cattle/)` Register a new cattle record
 - `PATCH(/cattle/{id})` Update an existing cattle record
 - `PUT(/cattle/{id})` Partial update
-- `PATCH(/{id}/destroy)` Logical deletion
+- `DELETE(/{id}/destroy)` Logical deletion
 
 ### MongoValidation
 
@@ -83,7 +83,3 @@ Here u gonna find all the info about my cattle in Finca La Piolina. Thats the wa
   }
 }
 ```
-
-## todo
-
-- implement users, using login with google, but 4 include that is necessary firebase auth.
