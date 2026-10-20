@@ -1,14 +1,33 @@
 package com.osvaldozunniga.apiSpringBoot.controller;
 
+import java.util.Collections;
+import java.util.Map;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+public class RootController {
 
-public class rootController {
     @GetMapping("/")
-    public String rootPath(){
-        return "Welcome, this is BoviSoft APIREST and there u gonna find all the info about my cattle in Finca La Piolina. Thats the way Im gonna manage my cattles, including sells. Please check the endpoints available for more info.";
-    };
+    public ResponseEntity<Map<String, String>> rootPath() {
+        return ResponseEntity.ok(Collections.singletonMap(
+                "message",
+                "Welcome to BoviSoft APIREST. Access endpoints at /api/cattle and /api/farm-events"
+        ));
+    }
 
+    @GetMapping("/api")
+    public ResponseEntity<Map<String, String>> apiPath() {
+        return ResponseEntity.ok(Collections.singletonMap(
+                "message",
+                "BoviSoft API root endpoint"
+        ));
+    }
+
+    @GetMapping({"/health", "/api/health"})
+    public ResponseEntity<Map<String, String>> healthCheck() {
+        return ResponseEntity.ok(Collections.singletonMap("status", "UP"));
+    }
 }
