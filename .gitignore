@@ -1,8 +1,9 @@
 HELP.md
 target/
+!.mvn/wrapper/maven-wrapper.properties
 .mvn/wrapper/maven-wrapper.jar
-.mvn/
-resources/
+/resources/
+!**/src/main/resources/**
 !**/src/main/**/target/
 !**/src/test/**/target/
 
@@ -34,4 +35,26 @@ build/
 ### VS Code ###
 .vscode/
 
+### OS generated files ###
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+### Secrets and configuration ###
 *.properties
+!.mvn/wrapper/maven-wrapper.properties
+!src/main/resources/application.properties.example
+application.properties
+**/application.properties
+
+### Uploads ###
+uploads/
+/uploads/
+
+### Logs ###
+*.log
+logs/
+
+### Modernize / Upgrade scripts ###
+.github/modernize/
