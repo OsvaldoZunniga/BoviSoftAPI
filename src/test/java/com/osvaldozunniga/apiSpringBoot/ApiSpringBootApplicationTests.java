@@ -9,5 +9,4 @@ class ApiSpringBootApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
