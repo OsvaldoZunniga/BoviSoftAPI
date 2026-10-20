@@ -4,11 +4,12 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 @Data
-@NoArgsConstructor
-@Document(collection="cattle")
-public class Cattle{
+@Document(collection = "cattle")
+public class Cattle {
+    public Cattle() {
+    }
     @Id
     private String id;
     private String earTag;
@@ -16,8 +17,10 @@ public class Cattle{
     private String breed;
     private String birthday;
     private Double weight;
-    private String imagePath;
+    private String gender;
+    private String image;
     private String motherId;
     private String fatherId;
     private int statusId = 1;
+    private String ownerId;
 }
