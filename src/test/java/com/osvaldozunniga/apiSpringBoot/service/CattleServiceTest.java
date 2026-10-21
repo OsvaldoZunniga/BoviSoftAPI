@@ -109,4 +109,19 @@ class CattleServiceTest {
         assertEquals(0, resultDto.getStatusId());
         verify(cattleRepository).save(existingCattle);
     }
+
+    @Test
+    void testUpdateCattleStatus_Success() {
+        Cattle existingCattle = new Cattle();
+        existingCattle.setId("cat-1");
+        existingCattle.setStatusId(1);
+
+        when(cattleRepository.findById("cat-1")).thenReturn(Optional.of(existingCattle));
+        when(cattleRepository.save(any(Cattle.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        CattleResponseDto resultDto = cattleService.updateCattleStatus("cat-1", 2);
+
+        assertEquals(2, resultDto.getStatusId());
+        verify(cattleRepository).save(existingCattle);
+    }
 }

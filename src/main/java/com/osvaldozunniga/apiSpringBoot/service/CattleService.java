@@ -161,4 +161,14 @@ public class CattleService {
         logger.info("Logically deleted cattle record with ID: {}", updatedCattle.getId());
         return CattleResponseDto.fromEntity(updatedCattle);
     }
+
+    public CattleResponseDto updateCattleStatus(String cattleId, int statusId) {
+        Cattle existingCattle = cattleRepository.findById(cattleId)
+                .orElseThrow(() -> new ResourceNotFoundException("Bovino no encontrado con ID: " + cattleId));
+
+        existingCattle.setStatusId(statusId);
+        Cattle updatedCattle = cattleRepository.save(existingCattle);
+        logger.info("Updated status to {} for cattle record with ID: {}", statusId, updatedCattle.getId());
+        return CattleResponseDto.fromEntity(updatedCattle);
+    }
 }

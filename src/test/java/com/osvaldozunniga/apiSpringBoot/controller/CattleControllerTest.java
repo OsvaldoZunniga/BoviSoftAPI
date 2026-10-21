@@ -120,4 +120,19 @@ class CattleControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.imageUrl").value("/uploads/standalone.png"));
     }
+
+    @Test
+    void testUpdateCattleStatus() throws Exception {
+        CattleResponseDto responseDto = new CattleResponseDto();
+        responseDto.setId("123");
+        responseDto.setStatusId(2);
+
+        when(cattleService.updateCattleStatus(eq("123"), eq(2))).thenReturn(responseDto);
+
+        mockMvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch("/api/cattle/123/status")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"statusId\": 2}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.statusId").value(2));
+    }
 }

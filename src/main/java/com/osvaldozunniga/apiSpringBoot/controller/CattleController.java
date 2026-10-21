@@ -107,4 +107,31 @@ public class CattleController {
         CattleResponseDto deletedCattle = cattleService.destroyCattle(cattleId);
         return ResponseEntity.ok(deletedCattle);
     }
+
+    @RequestMapping(value = "/{cattleId}/status", method = {org.springframework.web.bind.annotation.RequestMethod.PATCH, org.springframework.web.bind.annotation.RequestMethod.PUT})
+    public ResponseEntity<CattleResponseDto> updateCattleStatus(
+            @PathVariable String cattleId,
+            @RequestBody(required = false) Map<String, Object> body,
+            @RequestParam(value = "statusId", required = false) Integer statusIdParam) {
+
+        Integer statusId = statusIdParam;
+        if (statusId == null && body != null && body.containsKey("statusId")) {
+            Object val = body.get("statusId");
+            if (val instanceof Number) {
+                statusId = ((Number) val).intValue();
+            } else if (val instanceof String) {
+                try {
+                    statusId = Integer.parseInt((String) val);
+                } catch (NumberFormatException ignored) {
+                }
+            }
+        }
+
+        if (statusId == null) {
+            throw new IllegalArgumentException("Debe proporcionar statusId válido");
+        }
+
+        CattleResponseDto updatedCattle = cattleService.updateCattleStatus(cattleId, statusId);
+        return ResponseEntity.ok(updatedCattle);
+    }
 }
